@@ -1,5 +1,3 @@
-// Пока не разобрался, код для себя
-
 
 // Сортировка слиянием
 /*
@@ -10,67 +8,105 @@
 В консоль выводится процесс слияния
 */
 
+//    1. Найдите среднюю точку, чтобы разделить массив на две половины:
+//    2. Вызовите mergeSort для первой половины:
+//    Вызовите mergeSort
+//    3. Вызовите mergeSort для второй половины:
+//    Вызовите mergeSort
+//    4. Объедините две половины, отсортированные на шаге 2 и 3:
+//    Вызов слияния
+
+import java.util.Arrays;
+
 public class N3_5Sort5Slianiem {
+        public static void main(String args[]) {
+            int array[] = {12, 11, 13, 5, 6, 7};
+            for (int element:array) {
+                System.out.print(element+" ");
+            }
 
-        public static void main(String[] params) {
-            int[] array = new int[] {3,1,5,7,9,8,5,12};
-            System.out.println(arrayToString(array));
-            array = mergeSort(array);
+            sort(array, 0, array.length-1);
+            System.out.println();
+            System.out.println(Arrays.toString(array));
         }
 
-        public static int[] mergeSort(int[] array) {
-            int[] tmp;
-            int[] currentSrc = array;
-            int[] currentDest = new int[array.length];
+// слияние двух подмассивов arr[].
+// первый подмассив arr[st..mid]
+// второй подмассив arr[mid+1..end]
 
-            int size = 1;
-            while (size < array.length) {
-                for (int i = 0; i < array.length; i += 2 * size) {
-                    merge(currentSrc, i, currentSrc, i + size, currentDest, i, size);
+        static void merge(int arr[], int st, int mid, int end)
+        {
+            // находим размеры двух подмассивов для слияния
+            int n1 = mid - st + 1;
+            int n2 = end - mid;
+
+            /* Создаем временные массивы массивы */
+            int L[] = new int[n1];
+            int R[] = new int[n2];
+
+            /*Копируем данные во временные массивы*/
+            for(int i=0; i<n1; ++i)
+                L[i] = arr[st + i];
+            for(int j=0; j<n2; ++j)
+                R[j] = arr[mid + 1+ j];
+
+            /* Слияние временных массивов */
+
+            // Инициализируем индексы первого и второго подмассивов
+
+            int i = 0, j = 0;
+
+            // Initial index of merged subarray array
+            // Инициализируем индекс объединенного массива подмассива
+            int k = st;
+            while(i < n1 && j < n2)
+            {
+                if(L[i] <= R[j])
+                {
+                    arr[k] = L[i];
+                    i++;
                 }
-
-                tmp = currentSrc;
-                currentSrc = currentDest;
-                currentDest = tmp;
-
-                size = size * 2;
-
-                System.out.println(arrayToString(currentSrc));
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
             }
-            return currentSrc;
+
+            /* Скопировать оставшиеся элементы L[] если есть */
+            while(i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            /* Скопировать оставшиеся элементы R[] если есть */
+            while(j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
         }
 
-        private static void merge(int[] src1, int src1Start, int[] src2, int src2Start, int[] dest,
-                                  int destStart, int size) {
-            int index1 = src1Start;
-            int index2 = src2Start;
+        // Main функкция которая сортиует arr[l..r] используя
+        // merge()
 
-            int src1End = Math.min(src1Start + size, src1.length);
-            int src2End = Math.min(src2Start + size, src2.length);
+        static void sort(int arr[], int l, int r)
+        {
+            if(l < r)
+            {
+                // Поиск средней точки
+                int m = (l+r)/2;
 
-            int iterationCount = src1End - src1Start + src2End - src2Start;
+                // Сортировка первой и второй половинки
+                sort(arr, l, m);
+                sort(arr , m+1, r);
 
-            for (int i = destStart; i < destStart + iterationCount; i++) {
-                if (index1 < src1End && (index2 >= src2End || src1[index1] < src2[index2])) {
-                    dest[i] = src1[index1];
-                    index1++;
-                } else {
-                    dest[i] = src2[index2];
-                    index2++;
-                }
+                // Слияние сортрованных половинок
+                merge(arr, l, m, r);
             }
-        }
-
-        private static String arrayToString(int[] array) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[");
-            for (int i = 0; i < array.length; i++) {
-                if (i > 0) {
-                    sb.append(", ");
-                }
-                sb.append(array[i]);
-            }
-            sb.append("]");
-            return sb.toString();
         }
     }

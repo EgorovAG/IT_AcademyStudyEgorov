@@ -3,18 +3,28 @@ import java.util.Arrays;
 public class N1ClassWithSort {
     public static void main(String[] args) {
         int array1[] = {3, 5, 7, 4, 1};
-//        Sort.sortVibor(array1);
+        System.out.println("Before sort;");
+        System.out.println(Arrays.toString(array1));
+
+        //Выбрать любой метод сортировки:
+
+        Sort.sortVibor(array1);
 //        Sort.sortBubble(array1);
 //        Sort.sortSheik(array1);
-        Sort.sortVkluchenia(array1);
+//        Sort.sortVkluchenia(array1);
+//        Sort.sortSlianiem(array1);
+//        Sort.sortRazdeleniem(array1);
 
+        System.out.println("After sort:");
         System.out.println(Arrays.toString(array1));
 
     }
 }
 class Sort {
-    //Метод сортировки выбором
-   public static int[] sortVibor(int[] array) {
+
+    //МЕТОД СОРТИРОВКА ВЫБОРОМ
+
+    public static int[] sortVibor(int[] array) {
         for (int i = 0; i < array.length; i++) {
             int min = array[i];
             int minN = i;
@@ -30,7 +40,9 @@ class Sort {
         }
         return array;
     }
-    //Метод сортировки пузырьками
+
+    //МЕТОД СОРТИРОВКА ПУЗЫРЬКАМИ
+
     public static int[] sortBubble(int[] array) {
         for (int i = 0; i < array.length; i++) {
             int min = array[i];
@@ -47,35 +59,38 @@ class Sort {
         }
         return array;
     }
-    //Метод сортировки Шейкерная
-    public static int[] sortSheik(int[] array){
+
+    //МЕТОД ШЕЙКЕРНАЯ СОРТИРОВКА
+
+    public static int[] sortSheik(int[] array) {
         int start = 0; // начало
         int end = array.length - 1; // конец
 
         do {
             //Сдвигаем с начала в конец
             for (int i = start; i < end; i++) {
-                if(array[i] > array[i+1]) {
-                    int b=array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = b;
+                if (array[i] > array[i + 1]) {
+                    int b = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = b;
                 }
             }
             end--; // уменьшаем правую границу
             //Сдвигаем слева направо
-            for (int i = end; i > start ; i--) {
-                if(array[i] < array[i-1]) {
-                    int b=array[i];
-                    array[i] = array[i-1];
-                    array[i-1] = b;
+            for (int i = end; i > start; i--) {
+                if (array[i] < array[i - 1]) {
+                    int b = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = b;
                 }
             }
             start++; // увеличиваем левую границу
         } while (start <= end);
-       return array;
+        return array;
     }
+
     // Метод сортировки включением
-    public static int[] sortVkluchenia(int[] array){
+    public static int[] sortVkluchenia(int[] array) {
         for (int left = 0; left < array.length; left++) {
             // Вытаскиваем значение элемента
             int value = array[left];
@@ -93,14 +108,160 @@ class Sort {
             // В освободившееся место вставляем вытащенное значение
             array[i + 1] = value;
         }
-       return array;
+        return array;
     }
-    //Метод сортировки слиянием
 
-    //Метод сортирвки разделением
+    //МЕТОД СОРТИРОВКА СЛИЯНИЕМ
+
+    public static int[] sortSlianiem(int[] array) {
 
 
+        //  N1ClassWithSort s = new N1ClassWithSort();
+
+        sort(array, 0, array.length - 1);
+
+        return array;
+    }
+
+
+
+
+// слияние двух подмассивов arr[].
+// первый подмассив arr[st..mid]
+// второй подмассив arr[mid+1..end]
+
+        static void merge(int arr[], int st, int mid, int end) {
+
+            // находим размеры двух подмассивов для слияния
+            int n1 = mid - st + 1;
+            int n2 = end - mid;
+
+            /* Создаем временные массивы массивы */
+            int L[] = new int[n1];
+            int R[] = new int[n2];
+
+            /*Копируем данные во временные массивы*/
+            for(int i=0; i<n1; ++i)
+                L[i] = arr[st + i];
+            for(int j=0; j<n2; ++j)
+                R[j] = arr[mid + 1+ j];
+
+            /* Слияние временных массивов */
+
+            // Инициализируем индексы первого и второго подмассивов
+
+            int i = 0, j = 0;
+
+            // Initial index of merged subarray array
+            // Инициализируем индекс объединенного массива подмассива
+            int k = st;
+            while(i < n1 && j < n2)
+            {
+                if(L[i] <= R[j])
+                {
+                    arr[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            /* Скопировать оставшиеся элементы L[] если есть */
+            while(i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            /* Скопировать оставшиеся элементы R[] если есть */
+            while(j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+
+        // Main функкция которая сортиует arr[l..r] используя
+        // merge()
+
+        public static void sort(int arr[], int l, int r) {
+
+            if(l < r)
+            {
+                // Поиск средней точки
+                int m = (l+r)/2;
+
+                // Сортировка первой и второй половинки
+                sort(arr, l, m);
+                sort(arr , m+1, r);
+
+                // Слияние сортрованных половинок
+                merge(arr, l, m, r);
+            }
+        }
+
+
+    //МЕТОД СОРТИРОВКА РАЗДЕЛЕНИЕМ
+
+    public static int[] sortRazdeleniem(int[] array) {
+
+        int low = 0;
+        int high = array.length - 1;
+
+        quickSort(array, low, high);
+        return array;
+
+    }
+
+
+    public static void quickSort(int[] array, int low, int high) {
+        if (array.length == 0)
+            return;//завершить выполнение, если длина массива равна 0
+
+        if (low >= high)
+            return;//завершить выполнение если уже нечего делить
+
+        // выбрать опорный элемент
+        int middle = low + (high - low) / 2;
+        int opora = array[middle];
+
+        // разделить на подмассивы, который больше и меньше опорного элемента
+        int i = low, j = high;
+        while (i <= j) {
+            while (array[i] < opora) {
+                i++;
+            }
+
+            while (array[j] > opora) {
+                j--;
+            }
+
+            if (i <= j) {//меняем местами
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+
+        // вызов рекурсии для сортировки левой и правой части
+        if (low < j)
+            quickSort(array, low, j);
+
+        if (high > i)
+            quickSort(array, i, high);
+    }
 }
+
+
+
 
 
 
