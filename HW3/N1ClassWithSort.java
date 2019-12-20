@@ -1,25 +1,59 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class N1ClassWithSort {
     public static void main(String[] args) {
-        int array1[] = {3, 5, 7, 4, 1};
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter array lenght=");
+        int c = sc.nextInt();
+        if (c<0) {
+            System.out.print("Enter natural number=");
+            c = sc.nextInt();
+        }
+
+        int[] array1 = new int[c];
+
+        for (int k = 0; k < array1.length; k++) {
+            array1[k] = (int) ((Math.random() * 21) - 10);
+        }
         System.out.println("Before sort;");
         System.out.println(Arrays.toString(array1));
 
-        //Выбрать любой метод сортировки:
-
-        Sort.sortVibor(array1);
-//        Sort.sortBubble(array1);
-//        Sort.sortSheik(array1);
-//        Sort.sortVkluchenia(array1);
-//        Sort.sortSlianiem(array1);
-//        Sort.sortRazdeleniem(array1);
-
-        System.out.println("After sort:");
-        System.out.println(Arrays.toString(array1));
-
+            System.out.println("Enter number method sorting");
+            System.out.println("1-Sort Vibor");
+            System.out.println("2-Sort Bubble");
+            System.out.println("3-Sort Sheik");
+            System.out.println("4-Sort Vkluchenia");
+            System.out.println("5-Sort Slianiem");
+            System.out.println("6-Sort Razdeleniem");
+            int x=sc.nextInt();
+            switch (x){
+                case(1):
+                    Sort.sortVibor(array1);
+                    break;
+                case(2):
+                    Sort.sortBubble(array1);
+                    break;
+                case(3):
+                    Sort.sortSheik(array1);
+                    break;
+                case(4):
+                    Sort.sortVkluchenia(array1);
+                    break;
+                case(5):
+                    Sort.sortSlianiem(array1);
+                    break;
+                case(6):
+                    Sort.sortRazdeleniem(array1);
+                    break;
+                default:
+                    System.out.println("You entered an invalid number");
+            }
+            System.out.println("After sort:");
+            System.out.println(Arrays.toString(array1));
     }
 }
+
 class Sort {
 
     //МЕТОД СОРТИРОВКА ВЫБОРОМ
