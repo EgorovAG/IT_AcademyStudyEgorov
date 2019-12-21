@@ -2,47 +2,38 @@
 
 import java.util.Scanner;
 
-// Делаю через массив
-
 public class N2__6 {
     public static void main(String[] args) {
 
-        int numbers = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите натуральное число: ");
-        int a = sc.nextInt();
-        if (a > 0) {
-            int z = 0;
-            int k = a;
-            //int count = 0;
-
-            int[] array;
-            while (k % 10 != 0) {
-                k /= 10;
-                z++;
-            }
-
-            array = new int[z];
-            while (a % 10 != 0) {
-                for (int i = 0; i < z; i++) {
-                    array[i] = a % 10;
-                    a /= 10;
-                }
-                for (int i = 0; i < array.length; i++) {
-                   int count = 0;
-                    for (int j = 0; j < i; j++) {
-                        if (array[j] == array[i]) {
-                            count++;
-                        }
-                    }
-                    if (count == 0) {
-                        numbers++;
-                    }
-                }
-                System.out.println(numbers);            }
+        System.out.println("Enter natural number: ");
+        int num = sc.nextInt();
+        if (num <0 ) {
+            System.out.println("You have entered a non-natural number, try again");
+            num = sc.nextInt();
         }
-        else
-            System.out.println("Вы ввели не натуральное число, попробуйте еще раз");
+            int count=0;
+            int count2=0;
+
+            while(num>0) {
+                int d=num%10;
+
+                int num2=num;
+                count=0;
+
+                while (num2>0) {
+                    int d2 = num2 % 10;
+                    if (d == d2) {
+                        count++;
+                    }
+                    num2/=10;
+                }
+                if(count<2) {
+                    count2++;
+                }
+                num/=10;
+            }
+            System.out.println("The number of different digits is equal="+count2);
     }
 }
 
