@@ -14,13 +14,7 @@ public class Test {
            System.out.println("Такого элемента нет");
        }
 
-        int compare = Country.compare();
-        if (compare<0)
-            System.out.println("Area Germany smaller France ");
-        else if (compare>0)
-            System.out.println("Area Germany more France");
-        else
-            System.out.println("Area Germany equals France");
-
+        Country country2 = Country.AUSTRIA;
+       country2.compare(Country.BELGIUM);
     }
 }

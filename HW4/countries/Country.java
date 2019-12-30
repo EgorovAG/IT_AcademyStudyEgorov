@@ -28,15 +28,19 @@ public enum Country implements ICountry {
     }
 
     @Override
-    public int getPopulation() { return population; }
+    public int getPopulation() {
+        return population;
+    }
 
-    public static int compare() {
-        if (Country.GERMANY.compareTo(Country.FRANCE) < 0)
-            return -1;
-        else if (Country.GERMANY.compareTo(Country.FRANCE) == 0)
-            return 0;
-        else
-            return 1;
+
+    public void compare(Country country) {
+        if (this.areaCountry == country.getAreaCountry()) {
+            System.out.println("Popular "+this.name() +country.name()+ " countries is equals");
+        } else if (this.areaCountry > country.getAreaCountry()) {
+            System.out.println("Popular "+this.name()+"country more "+country.name());
+        } else {
+            System.out.println("Popular "+this.name()+"country smaller "+country.name());
+        }
     }
 }
 
