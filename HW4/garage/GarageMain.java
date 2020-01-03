@@ -40,15 +40,15 @@ public class GarageMain {
 //        System.out.println("Открываю машину " + mercedes1.open(key));
 //        System.out.println("Открываю машину " + mercedes1.open(key2));
 
-        System.out.println("проверяем категорию водителя и авто; ключи водителя и замок; и открываем авто");
+//        "проверяем категорию водителя и авто; ключи водителя и замок; и открываем авто"
         driver.open(carLicense, key);
         mercedes1.open(key);
-        System.out.println("водитель заводит машину, если предыдущий метод true");
+//        "водитель заводит машину, если предыдущий метод true"
         driver.start();
-        engine.running();
-        System.out.println("взял пассажиров");
+        engine.start();
+//       "взял пассажиров"
         driver.takePassenger(3);
-        System.out.println("водитель едет на машине, если метод start() true");
+//       "водитель едет на машине, если метод start() true"
         driver.drivesCar();
         engine.running();
 

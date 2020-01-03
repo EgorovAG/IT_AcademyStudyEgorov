@@ -8,10 +8,11 @@ public class Engine implements IChangebleFuelType {
     private final int capacity;
     private FuelType fuelType;
     private boolean running = false;
+    private int volFuel = 5;
 
     public Engine(int capacity,
                   FuelType fuelType,
-                  String id){
+                  String id) {
 
         this.capacity = capacity;
         this.fuelType = fuelType;
@@ -39,27 +40,35 @@ public class Engine implements IChangebleFuelType {
         this.fuelType = fuelType;
     }
 
-    public boolean start(){
-        if(!running){
+    public boolean start() {
+        if (!running) {
             running = true;
+            System.out.println("Машина заведена");
         } else {
+            System.out.println("Не могу завести уже заведенный мотор");
 //            throw new IllegalArgumentException("Немогу завесту уже заведенный мотор");
         }
         return running;
     }
-    public boolean stop(){
-        if(running){
+
+    public boolean stop() {
+        if (running) {
             running = false;
+            System.out.println("Машина заглушена");
         } else {
+            System.out.println("Не могу остановить уже остановленный мотор");
 //            throw new IllegalArgumentException("Немогу остановить уже остановленный мотор");
         }
         return running;
     }
-    public double running(){
-        if(running){
-            //TODO добавить рандом
-            return 2;
+
+    public void running() {
+        if (running) {
+            int mileage = 0;
+            for (int i = 0; i < volFuel; i++) {
+                mileage++;
+            }
+            System.out.println("Закончился бензин и машина заглохла и проехала всего " + mileage +" км ");
         }
-        return 0;
     }
 }

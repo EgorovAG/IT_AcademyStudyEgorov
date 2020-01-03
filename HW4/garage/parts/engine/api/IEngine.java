@@ -7,6 +7,6 @@ public interface IEngine {
 
     boolean start();
     boolean stop();
-    double running();
+    void running();
 
 }

@@ -31,23 +31,23 @@ public class Driver implements IDriver {
     @Override
     public void open(ICarLicense carLicense, IKey key) {
         if(carLicense.getCarLicense().equals(license)) {
-            System.out.println("category fits and can use this car ");
+            System.out.println("категория соответствует и можно использовать машину ");
             if (key.getKey().equals(numberOfKey)) {
-                System.out.println("the door lock is open");
+                System.out.println("дверной замок открыт");
                 o = true;
             } else {
-                System.out.println("the key doesn't fit ");
+                System.out.println("ключ не соответствует ");
             }
         }
          else {
-            System.out.println("category doesn't fits and doesn't can use this car");
+            System.out.println("категоирия не соответствует и автомобиль не может использоваться");
         }
     }
 
     @Override
     public void start() {
         if (o)
-        System.out.println("started the car");
+        System.out.println("автомобиль заведен");
         s=true;
 
     }
@@ -56,7 +56,7 @@ public class Driver implements IDriver {
     public void drivesCar() {
 
         if (s) {
-            System.out.println("driver drives a car");
+            System.out.println("водитель управляет движущимся автомобилем");
         }
     }
 
