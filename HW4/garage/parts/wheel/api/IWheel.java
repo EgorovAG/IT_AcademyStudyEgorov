@@ -1,7 +1,9 @@
 package garage.parts.wheel.api;
 
 public interface IWheel {
-    NameWheel getNameWheel();
-    Radius getRadius();
+    String getRadius();
     Season getSeason();
+    NameWheel getNameWheel();
+
+
 }

@@ -1,39 +1,72 @@
-package garage.driver;
+package garage.Driver;
 
-import garage.driver.api.Category;
-import garage.driver.api.IDriver;
+import garage.Driver.api.IDriver;
+
+import garage.carLicense.api.ICarLicense;
+import garage.carLicense.api.License;
+import garage.parts.key.api.IKey;
+
 
 public class Driver implements IDriver {
-    private int experience;
-    private Category category;
+    private final String numberOfKey;
+    private License license;
+    private boolean o,s;
+    private int passenger;
 
-    public Driver(int experience, Category category) {
-        this.experience = experience;
-        this.category = category;
+    public Driver(License license, String numberOfKey ) {
+        this.numberOfKey = numberOfKey;
+        this.license = license;
     }
 
     @Override
-    public void open() {
-        System.out.println("Водитель открыл машину");
+    public void close(IKey key) {
+        if(key.getKey().equals(numberOfKey)){
+            System.out.println("Car is close");
+        }
+        else {
+            System.out.println("the key doesn't fit");
+        }
     }
 
     @Override
-    public void startCar() {
-        System.out.println("Водитель завел машину");
+    public void open(ICarLicense carLicense, IKey key) {
+        if(carLicense.getCarLicense().equals(license)) {
+            System.out.println("category fits and can use this car ");
+            if (key.getKey().equals(numberOfKey)) {
+                System.out.println("the door lock is open");
+                o = true;
+            } else {
+                System.out.println("the key doesn't fit ");
+            }
+        }
+         else {
+            System.out.println("category doesn't fits and doesn't can use this car");
+        }
     }
 
     @Override
-    public void close() {
-        System.out.println("Водитель закрыл машину");
+    public void start() {
+        if (o)
+        System.out.println("started the car");
+        s=true;
+
     }
 
     @Override
-    public void drive() {
-        System.out.println("Водитель едет на машине");
+    public void drivesCar() {
+
+        if (s) {
+            System.out.println("driver drives a car");
+        }
     }
 
     @Override
-    public void takePassenger() {
-        System.out.println("Посадил пассажира");
+    public void takePassenger(int passengers) {
+        if (passengers<4) {
+            System.out.println("взяли " + passengers + " пассажиров");
+        }
+        else
+            System.out.println("больше 3-х пассажиров не беру");
+        }
     }
-}
+

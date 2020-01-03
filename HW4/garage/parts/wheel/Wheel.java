@@ -1,39 +1,45 @@
 package garage.parts.wheel;
 
-import garage.parts.wheel.api.IWheel;
+import garage.parts.wheel.api.IChangebleNameWheel;
+import garage.parts.wheel.api.IChangebleSeason;
 import garage.parts.wheel.api.NameWheel;
-import garage.parts.wheel.api.Radius;
 import garage.parts.wheel.api.Season;
 
-public class Wheel implements IWheel {
+public class Wheel implements IChangebleNameWheel, IChangebleSeason {
+    String radius;
+    NameWheel nameWheel;
+    Season season;
 
-    private NameWheel nameWheel;
-    private Radius radius;
-    private Season season;
-
-    public Wheel(NameWheel nameWheel, Radius radius, Season season) {
-        this.nameWheel = nameWheel;
+    public Wheel(String radius, NameWheel nameWheel, Season season) {
         this.radius = radius;
+        this.nameWheel = nameWheel;
         this.season = season;
     }
 
     @Override
-    public NameWheel getNameWheel() {
-        return nameWheel;
+    public void setNameWheel(NameWheel nameWheel) {
+
     }
 
     @Override
-    public Radius getRadius() {
-        return radius;
+    public void setSeason(Season season) {
+
+    }
+
+    @Override
+    public String getRadius() {
+        return null;
     }
 
     @Override
     public Season getSeason() {
-        return season;
+        return null;
     }
 
     @Override
-    public void installWheels() {
-
+    public NameWheel getNameWheel() {
+        return null;
     }
+
+
 }

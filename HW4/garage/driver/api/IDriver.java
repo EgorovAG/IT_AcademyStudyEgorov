@@ -1,9 +1,15 @@
-package garage.driver.api;
+package garage.Driver.api;
+
+import garage.carLicense.CarLicense;
+import garage.carLicense.api.ICarLicense;
+import garage.parts.key.api.IKey;
 
 public interface IDriver {
-    void open();
-    void startCar();
-    void close();
-    void drive();
-    void takePassenger();
+    void close(IKey key);
+    void open(ICarLicense carLicense, IKey key);
+    void start();
+    void drivesCar();
+    void takePassenger(int passengers);
+
+
 }

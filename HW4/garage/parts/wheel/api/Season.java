@@ -1,7 +1,8 @@
 package garage.parts.wheel.api;
 
 public enum Season {
-    SUMMER,
+    ALLSEASON,
     WINTER,
-    ALLSEASON
+    SUMMER
+
 }

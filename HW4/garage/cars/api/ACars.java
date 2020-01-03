@@ -8,11 +8,6 @@ public abstract class ACars implements ICar{
     }
 
     @Override
-    public void open() {
-        System.out.println("Открыто");
-    }
-
-    @Override
     public void close() {
         System.out.println("Закрыто");
     }

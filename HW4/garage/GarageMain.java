@@ -1,28 +1,57 @@
 package garage;
 
+import garage.Driver.Driver;
+import garage.carLicense.api.ICarLicense;
+import garage.carLicense.api.License;
+import garage.cars.Lexus;
 import garage.cars.Mercedes;
-import garage.driver.Driver;
-import garage.driver.api.Category;
-import garage.parts.engine.MercedesEngine;
-import garage.parts.engine.NoNameEngine;
+import garage.carLicense.CarLicense;
+import garage.parts.engine.api.IEngine;
+import garage.parts.key.Key;
+import garage.parts.lock.Lock;
+import garage.parts.key.api.IKey;
+import garage.parts.lock.api.ILock;
+import garage.parts.engine.Engine;
 import garage.parts.engine.api.FuelType;
 import garage.parts.wheel.Wheel;
 import garage.parts.wheel.api.NameWheel;
-import garage.parts.wheel.api.Radius;
 import garage.parts.wheel.api.Season;
 
 public class GarageMain {
     public static void main(String[] args) {
+        ILock lock = new Lock("asd");
+        IKey key = new Key("asd");
+        IKey key2 = new Key("asdы");
+        IEngine engine = new Engine(3000, FuelType.PETROL, "QWE_123_578");
+        ICarLicense carLicense = new CarLicense(License.B);
+
+        Driver driver = new Driver(License.B, "asd");
+
+        Mercedes mercedes1 = new Mercedes("CLS", engine, lock,
+                new Wheel("R21", NameWheel.CONTINENTAL, Season.WINTER), carLicense);
+
+        Lexus lexus = new Lexus("RX350",
+                new Engine(3500,FuelType.PETROL, "ASD_123_45"), lock,
+                new Wheel("R19", NameWheel.PIRELLI, Season.ALLSEASON), carLicense);
 
 
-        Mercedes mercedes1 = new Mercedes("CLS", new MercedesEngine(2000, FuelType.DIESEL,
-                "QWE_255_335"), new Wheel(NameWheel.CONTINENTAL, Radius.R19, Season.WINTER));
-        Mercedes mercedes2 = new Mercedes("CLS", new NoNameEngine(1500, FuelType.PETROL,
-                "QWE_135"), new Wheel(NameWheel.DUNLOP, Radius.R17,Season.ALLSEASON));
-        Driver driver = new Driver(5, Category.B);
+//        System.out.println("Открываю замок " + lock.open(key));
+//        System.out.println("Открываю замок " + lock.open(key2));
+//        System.out.println("Открываю машину " + mercedes1.open(key));
+//        System.out.println("Открываю машину " + mercedes1.open(key2));
+
+        System.out.println("проверяем категорию водителя и авто; ключи водителя и замок; и открываем авто");
+        driver.open(carLicense, key);
+        mercedes1.open(key);
+        System.out.println("водитель заводит машину, если предыдущий метод true");
+        driver.start();
+        engine.running();
+        System.out.println("взял пассажиров");
+        driver.takePassenger(3);
+        System.out.println("водитель едет на машине, если метод start() true");
+        driver.drivesCar();
+        engine.running();
 
 
-
-        }
     }
-
+}

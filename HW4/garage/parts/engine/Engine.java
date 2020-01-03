@@ -3,14 +3,15 @@ package garage.parts.engine;
 import garage.parts.engine.api.FuelType;
 import garage.parts.engine.api.IChangebleFuelType;
 
-public class MercedesEngine implements IChangebleFuelType {
+public class Engine implements IChangebleFuelType {
     private final String id;
     private final int capacity;
     private FuelType fuelType;
     private boolean running = false;
-    private int volFuel=5;
 
-    public MercedesEngine(int capacity, FuelType fuelType, String id){
+    public Engine(int capacity,
+                  FuelType fuelType,
+                  String id){
 
         this.capacity = capacity;
         this.fuelType = fuelType;
@@ -40,30 +41,25 @@ public class MercedesEngine implements IChangebleFuelType {
 
     public boolean start(){
         if(!running){
-            running=true;
-            System.out.println("Машина заведена");
+            running = true;
         } else {
-            System.out.println("Не могу завести уже заведенный мотор");
+//            throw new IllegalArgumentException("Немогу завесту уже заведенный мотор");
         }
         return running;
     }
     public boolean stop(){
         if(running){
-            System.out.println("Машина заглушена");
-
+            running = false;
         } else {
-            System.out.println("Не могу остановить уже остановленный мотор");
+//            throw new IllegalArgumentException("Немогу остановить уже остановленный мотор");
         }
         return running;
     }
-    public int running(){
+    public double running(){
         if(running){
-            int mileage = 0;
-            for (int i = 0; i <volFuel ; i++) {
-                mileage++;
-            }
-            System.out.println("Закончился бензин и машина заглохла и проехала всего %/");;
+            //TODO добавить рандом
+            return 2;
         }
-
+        return 0;
     }
 }

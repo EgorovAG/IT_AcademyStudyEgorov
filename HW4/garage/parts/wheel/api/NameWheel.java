@@ -1,7 +1,7 @@
 package garage.parts.wheel.api;
 
-public enum NameWheel{
+public enum NameWheel {
     CONTINENTAL,
-    DUNLOP,
-    PIRELLI
+    PIRELLI,
+    SAVA
 }
