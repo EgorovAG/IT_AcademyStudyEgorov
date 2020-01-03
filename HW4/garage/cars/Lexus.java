@@ -14,14 +14,14 @@ public class Lexus extends ACars {
     private IEngine engine;
     private final ILock lock;
     private IWheel wheel;
-    private License driverLicense;
+    private ICarLicense carLicense;
 
     public Lexus(String model, IEngine engine, ILock lock, IWheel wheel, ICarLicense carLicense){
         this.model = model;
         this.engine = engine;
         this.lock = lock;
         this.wheel = wheel;
-        this.driverLicense = driverLicense;
+        this.carLicense = carLicense;
     }
 
     @Override

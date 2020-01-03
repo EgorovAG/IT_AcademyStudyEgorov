@@ -2,7 +2,6 @@ package garage.cars;
 
 import garage.carLicense.api.ICarLicense;
 import garage.cars.api.ACars;
-import garage.carLicense.api.License;
 import garage.parts.key.api.IKey;
 import garage.parts.lock.api.ILock;
 import garage.parts.engine.api.IEngine;
@@ -13,14 +12,14 @@ public class Mercedes extends ACars{
     private IEngine engine;
     private final ILock lock;
     private IWheel wheel;
-    private License license;
+    private ICarLicense license;
 
     public Mercedes(String model, IEngine engine, ILock lock, IWheel wheel, ICarLicense carLicense){
         this.model = model;
         this.engine = engine;
         this.lock = lock;
         this.wheel = wheel;
-        this.license = license;
+        this.license = carLicense;
     }
 
     @Override
