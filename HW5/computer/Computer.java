@@ -35,7 +35,5 @@ public class Computer {
         }
         else
             System.out.println("RAM is false");
-//        System.out.println(Arrays.toString(parts));
-//        System.out.println(Arrays.toString(standards));
     }
 }
