@@ -1,14 +1,19 @@
 package computer.parts.ram;
 
-import computer.parts.ram.api.IKingston;
-import computer.standart.ram.api.RAMStandard;
+import computer.parts.api.IParts;
+import computer.parts.api.IStandards;
 
-public class Kingston implements IKingston {
-    private Kingston kingston;
-    private RAMStandard ramStandard;
+public class Kingston implements IParts {
+    private IStandards RAMStandard;
+
+    public Kingston(IStandards RAMStandard) {
+        this.RAMStandard = RAMStandard;
+    }
 
     @Override
-    public boolean test() {
-        return String.valueOf(kingston).equals(String.valueOf(ramStandard));
+    public IStandards getParts() {
+        return RAMStandard ;
     }
+
+
 }

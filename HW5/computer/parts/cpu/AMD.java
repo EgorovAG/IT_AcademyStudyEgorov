@@ -1,15 +1,17 @@
 package computer.parts.cpu;
 
-import computer.parts.cpu.api.AMDStand;
-import computer.parts.cpu.api.IAMD;
-import computer.standart.cpu.api.CPUStandard;
+import computer.parts.api.IParts;
+import computer.parts.api.IStandards;
 
-public class AMD implements IAMD {
-    private AMDStand amdStand;
-    private CPUStandard cpuStandard;
+public class AMD implements IParts {
+    private IStandards CPUStandard;
+
+    public AMD(IStandards CPUStandard) {
+        this.CPUStandard = CPUStandard;
+    }
 
     @Override
-    public boolean test() {
-        return String.valueOf(amdStand).equals(String.valueOf(cpuStandard));
+    public IStandards getParts() {
+        return CPUStandard ;
     }
 }

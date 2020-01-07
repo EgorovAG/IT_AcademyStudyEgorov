@@ -1,14 +1,18 @@
 package computer.parts.hdd;
 
-import computer.parts.hdd.api.IBaracuda;
-import computer.standart.hdd.api.HDDStandard;
+import computer.parts.api.IParts;
+import computer.parts.api.IStandards;
 
-public class Baracuda implements IBaracuda {
-    private Baracuda baracuda;
-    private HDDStandard hddStandard;
+public class Baracuda implements IParts {
+    private IStandards HDDStandard;
+
+    public Baracuda(IStandards HDDStandard) {
+        this.HDDStandard = HDDStandard;
+    }
 
     @Override
-    public boolean test() {
-        return String.valueOf(baracuda).equals(String.valueOf(hddStandard));
+    public IStandards getParts() {
+        return HDDStandard ;
     }
+
 }

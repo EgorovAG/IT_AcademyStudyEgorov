@@ -1,33 +1,41 @@
 package computer;
 
-import computer.parts.Parts;
-import computer.parts.cpu.AMD;
-import computer.parts.hdd.Baracuda;
-import computer.parts.ram.Kingston;
-import computer.standart.Standard;
 
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import computer.parts.api.IParts;
+import computer.parts.api.IStandards;
+
+import java.util.Arrays;
 
 public class Computer {
-    private Parts parts;
-    private Standard standard;
+    private IParts[] parts;
+    private IStandards[] standards;
 
 
-    public Computer(Parts parts, Standard standard) {
+    Computer(IParts[] parts, IStandards[] standards) {
         this.parts = parts;
-        this.standard = standard;
+        this.standards = standards;
     }
 
 
     public void start(){
-        AMD amd = new AMD();
-        System.out.println("CPU is "+ amd.test());
-        Baracuda baracuda = new Baracuda();
-        System.out.println("HDD is " + baracuda.test());
-        Kingston kingston = new Kingston();
-        System.out.println("RAM is "+ kingston.test());
+        if(standards[0] == parts[0].getParts()){
+            System.out.println("CPU is true");
+        }
+        else
+            System.out.println("CPU is false");
 
+        if (standards[1]== parts[1].getParts()){
+            System.out.println("HDD is true");
+        }
+        else
+            System.out.println("HDD is false");
+
+        if (standards[2]==parts[2].getParts()){
+            System.out.println("RAM is true");
+        }
+        else
+            System.out.println("RAM is false");
+//        System.out.println(Arrays.toString(parts));
+//        System.out.println(Arrays.toString(standards));
     }
-
-
 }
