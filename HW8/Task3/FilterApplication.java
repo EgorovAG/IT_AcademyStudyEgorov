@@ -8,7 +8,6 @@ public class FilterApplication<T> {
     public static Collection filter(Collection collection, Filtr filtr ){
         filtr.filter1(collection);
         return collection;
-
     }
 
     public static <T extends Comparable> Collection sort(Collection<T> collection){

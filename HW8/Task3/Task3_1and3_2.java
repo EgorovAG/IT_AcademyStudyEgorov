@@ -10,27 +10,45 @@ package Task3;
 // коллекцию элементов реализующих интерфейс Comparable. И будет возвращать
 // результат сортировки
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Task3_1and3_2 {
     public static void main(String[] args) {
 
-       Set<SortComparable> set = new TreeSet<>();
-       set.add(new SortComparable("Stas"));
-       set.add(new SortComparable("Petr"));
-       set.add(new SortComparable("Igor"));
-       set.add(new SortComparable("Ula"));
-       set.add(new SortComparable("Inna"));
+       List<SortComparable> list = new ArrayList<>();
+       list.add(new SortComparable("Stas"));
+       list.add(new SortComparable("Petr"));
+       list.add(new SortComparable("Igor"));
+       list.add(new SortComparable("Ula"));
+       list.add(new SortComparable("Inna"));
 
-        for (SortComparable s: set) {
+        System.out.println("Коллекция: ");
+        for (SortComparable s: list) {
             System.out.println(s);
         }
 
-
-
+        System.out.println("Коллекция после сортировки:");
+        Collection collect = FilterApplication.sort(list);
+        for (Object o: collect) {
+            System.out.println(o);
         }
 
+        List list1 = new ArrayList();
+        list1.add(123);
+        list1.add("Stas");
+        list1.add("Tolia");
+        list1.add(12345);
 
+        System.out.println("Коллекция: ");
+        for (Object o: list1) {
+            System.out.println(o);
+        }
+
+        System.out.println("Коллекция list1 после фильтра");
+        FilterApplication.filter(list1, new Filtr());
+        for (Object o : list1) {
+            System.out.println(o);
+        }
     }
+}
 

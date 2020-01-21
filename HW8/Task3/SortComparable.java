@@ -10,13 +10,18 @@ public class SortComparable implements Comparable<SortComparable> {
 
     public SortComparable(String id) {
         this.id = id;
-
     }
 
     @Override
     public int compareTo(SortComparable o) {
        return this.getId().compareTo(o.getId());
+    }
 
+    @Override
+    public String toString() {
+        return "SortComparable{" +
+                "id='" + id + '\'' +
+                '}';
     }
 }
 
