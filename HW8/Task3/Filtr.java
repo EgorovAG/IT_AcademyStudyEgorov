@@ -10,7 +10,7 @@ public class Filtr {
 
         Iterator iterator = collection.iterator();
         while(iterator.hasNext()){
-            if (iterator.next() instanceof Integer)   // условие фильтра и сортировки
+            if (iterator.next() instanceof Number)   // фильтр если
                 iterator.remove();
         }
     }
