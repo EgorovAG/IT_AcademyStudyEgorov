@@ -16,11 +16,11 @@ public class Task3_1and3_2 {
     public static void main(String[] args) {
 
        List<SortComparable> list = new ArrayList<>();
-       list.add(new SortComparable("Stas"));
-       list.add(new SortComparable("Petr"));
-       list.add(new SortComparable("Igor"));
-       list.add(new SortComparable("Ula"));
-       list.add(new SortComparable("Inna"));
+       list.add(new SortComparable("MP 555"));
+       list.add(new SortComparable("MP 112"));
+       list.add(new SortComparable("MP 124"));
+       list.add(new SortComparable("MP 543"));
+       list.add(new SortComparable("MP 123"));
 
         System.out.println("Коллекция: ");
         for (SortComparable s: list) {
