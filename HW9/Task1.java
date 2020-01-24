@@ -1,4 +1,4 @@
-import java.util.regex.Matcher;
+﻿import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // 1. Выполнить Поиск в строке "Я люблю JAVA" при помощи регулярного
@@ -34,6 +34,7 @@ public class Task1 {
         System.out.println("совпадения в строке:");
         while (matcher2.find()){
             System.out.print(matcher2.start() +" ");
+
         }
     }
 }
