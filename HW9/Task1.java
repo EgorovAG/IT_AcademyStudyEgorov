@@ -1,4 +1,4 @@
-﻿import java.util.regex.Matcher;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // 1. Выполнить Поиск в строке "Я люблю JAVA" при помощи регулярного
@@ -9,11 +9,11 @@ public class Task1 {
         String str = "Я люблю JAVA";
 //Метод matches() — в Java сообщает, соответствует ли или нет данная строка заданному регулярному выражению
         System.out.println(str.matches("h*")); //false, т.к."h*"-  этому регулярному выражению соответсвует что
-                                                     // это должна быть буква h 0 или больше раз
+        // это должна быть буква h 0 или больше раз
         System.out.println(str.matches("h+")); //false, т.к."h+"-  этому регулярному выражению соответсвует что
-                                                      // это должна быть буква h 1 или больше раз
+        // это должна быть буква h 1 или больше раз
         System.out.println(str.matches("h?"));  //false, т.к."h?"-  этому регулярному выражению соответсвует что
-                                                      // это должна быть буква h 0 или 1 раз
+        // это должна быть буква h 0 или 1 раз
         Pattern pattern = Pattern.compile("h*");  //  h 0 или больше раз // false, тут везде 0 (совпадает 0 раз)
         Pattern pattern1 = Pattern.compile("h+"); //  h 1 или больше раз  // true так как даже 1 раза нет h
         Pattern pattern2 = Pattern.compile("h?");  // h 0 или 1 раз  // false,  тут везде 0 (совпадает 0 раз)

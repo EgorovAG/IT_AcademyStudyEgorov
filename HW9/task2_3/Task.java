@@ -43,10 +43,12 @@ private File file;
             String line = scanner.nextLine();
             String[] line1= line.split(" ");
             for (String temp : line1) {
-                if (temp.matches(word+"\\W?"))
+                if (temp.matches("\\W?"+"\\b"+word+"\\b"+"\\W?"+"\\W?"+"\\W?"))
                     count++;
+                }
+
             }
-        }
+
         System.out.println(String.format("количество слов \"%s\" %d  ",word , count));
     }
 }
