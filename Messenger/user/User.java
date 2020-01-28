@@ -1,14 +1,12 @@
 package user;
 
-import registrationValidation.Registration;
-import registrationValidation.MyException;
-import registrationValidation.Validation;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String name;
     private String password;
@@ -16,15 +14,6 @@ public class User {
     public static Map<String, Integer> userMap = new HashMap<>();
     public static void addUserMap(String name, int id){
         userMap.put(name, id);
-    }
-
-    public User(String name, String password) throws MyException {
-        this.name = name;
-        this.password = password;
-        Validation.validName(name);
-        Validation.validPassword(password);
-        Registration.reg(name,password);
-
     }
 
     public User(int id, String name, String password) {

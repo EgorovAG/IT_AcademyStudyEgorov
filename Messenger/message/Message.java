@@ -6,10 +6,10 @@ import user.User;
 import java.util.Date;
 
 public class Message<T> {
-    User user;
-    Type type;
-    T data;
-    Date date;
+   private User user;
+   private Type type;
+   private T data;
+   private Date date;
 
     public Message(User user, Type type, T data, Date date) {
         this.user = user;

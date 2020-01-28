@@ -5,6 +5,15 @@ import user.User;
 import java.util.Random;
 
 public class Registration {
+
+
+    public static User createUser(String name, String password) throws MyException {
+        Validation.validationNameAndPassword(name,  password);
+
+        return Registration.reg(name, password);
+
+    }
+
     public static User reg(String name, String password) throws MyException {
         int id;
         if (!User.userMap.containsKey(name)) {
