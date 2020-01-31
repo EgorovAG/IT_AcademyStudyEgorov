@@ -23,7 +23,7 @@ public class Validation {
                 }
             }
 
-            Pattern pattern2 = Pattern.compile("([a-zA-Z0-9':/!?+%]+){7,}"); //regex неверный- исправитЬ!!!
+            Pattern pattern2 = Pattern.compile("(?=.{7,})[':/!?+%]*\\w*[':/!?+%]+\\w*[':/!?+%]*");
             Matcher matcher2 = pattern2.matcher(password);
             if (matcher2.matches()) {
             } else {

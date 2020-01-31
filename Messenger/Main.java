@@ -1,3 +1,6 @@
+import Saver.HomeWork10.SaveVsLoadUser;
+import Saver.HomeWork10.SaverWriteBinnaryChat;
+import Saver.HomeWork10.SaverWriteWithToString;
 import Saver.SaverChat;
 import chat.Chat;
 import message.Message;
@@ -6,18 +9,16 @@ import registrationValidation.MyException;
 import registrationValidation.Registration;
 import user.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 public class Main {
     public static void main(String[] args) throws MyException {
 
-
         User user2 = Registration.createUser("Nikola@mail.ru","asdfgh?");
         User user1 = Registration.createUser("alex@mail.ru","qwerty!");
 
-//        System.out.println(user1);
-//        System.out.println(user2);
 
         Chat chat = new Chat(user1,user2);
 
@@ -29,6 +30,25 @@ public class Main {
         SaverChat saverChat = new SaverChat();
         saverChat.saveFileChat(chat);
 
-        }
+
+        SaverWriteBinnaryChat swbc = new SaverWriteBinnaryChat();
+        swbc.savWriteBinnaryChat(chat);
+
+        SaverWriteWithToString swwts = new SaverWriteWithToString();
+        swwts.savWriteWithToString(chat);
+
+        SaveVsLoadUser slu = new SaveVsLoadUser();
+        slu.saveUser(chat);
+
+
+//    slu.loadUSer(); // метод загрузки зарегестрированных пользователей пользователей
+
+
+
+
+
+
+
+    }
     }
 

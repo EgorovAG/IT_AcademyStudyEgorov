@@ -1,0 +1,4 @@
+Message{user=user{id=4329, name='alex@mail.ru', password='qwerty!'}, type=Text, data=Hello, date=Fri Jan 31 08:38:11 GMT+02:00 2020}
+Message{user=user{id=2354, name='Nikola@mail.ru', password='asdfgh?'}, type=Text, data=Hi, my friend!, date=Fri Jan 31 08:38:11 GMT+02:00 2020}
+Message{user=user{id=4329, name='alex@mail.ru', password='qwerty!'}, type=Text, data=How are you?, date=Fri Jan 31 08:38:11 GMT+02:00 2020}
+Message{user=user{id=2354, name='Nikola@mail.ru', password='asdfgh?'}, type=Text, data=I'am fine! Thanks, date=Fri Jan 31 08:38:11 GMT+02:00 2020}

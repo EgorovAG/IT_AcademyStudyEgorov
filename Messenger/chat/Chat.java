@@ -20,9 +20,21 @@ public class Chat {
             }
         }
 
+    public Chat(Set<User> userChatSet1) throws MyException {
+        if (userChatSet1.size() > 1)   {
+                userChatSet.addAll(userChatSet1);
+        } else
+                {throw new MyException("В чате не может быть меньше 2 пользователей");
+                }
+    }
+
 
     public Set<User> getUserChatSet() {
         return userChatSet;
+    }
+
+    public void setUserChatSet(Set<User> userChatSet) {
+        this.userChatSet = userChatSet;
     }
 
     public List<Message> getMessageList() {
@@ -48,8 +60,6 @@ public class Chat {
                 }
             }
         }
-
-
 }
 
 
