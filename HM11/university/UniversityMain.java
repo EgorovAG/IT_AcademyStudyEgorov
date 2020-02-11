@@ -1,7 +1,6 @@
 package university;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +59,7 @@ public class UniversityMain {
             saver.saveFile("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
                     "\\src\\university\\file2.txt", list1);
             saveToString.saveString("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
-                    "\\src\\university\\file2String.txt", list);
+                    "\\src\\university\\file2String.txt", list1);
 
 
             //сортируем по баллу
@@ -71,7 +70,7 @@ public class UniversityMain {
             saver.saveFile("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
                     "\\src\\university\\file3.txt", list2);
             saveToString.saveString("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
-                    "\\src\\university\\file3String.txt", list);
+                    "\\src\\university\\file3String.txt", list2);
 
 
             //переворачиваем
@@ -82,7 +81,7 @@ public class UniversityMain {
             saver.saveFile("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
                     "\\src\\university\\file4.txt", list3);
             saveToString.saveString("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
-                    "\\src\\university\\file4String.txt", list);
+                    "\\src\\university\\file4String.txt", list3);
 
 
             // отфильтровываем random 3 чела из этого списка, которые получат сертификат и удаляем их из списка
@@ -90,10 +89,11 @@ public class UniversityMain {
                     .filter(Student -> Student != null)
                     .limit(list3.size() - 3)
                     .collect(toList());
+
             saver.saveFile("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
                     "\\src\\university\\file5.txt", list4);
             saveToString.saveString("D:\\IDEAJAVA\\Egorov\\HoweWork11" +
-                    "\\src\\university\\file5String.txt", list);
+                    "\\src\\university\\file5String.txt", list4);
     }
 }
 
